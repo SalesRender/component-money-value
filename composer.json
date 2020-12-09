@@ -1,0 +1,30 @@
+{
+  "name": "leadvertex/money-value",
+  "description": "LeadVertex MoneyValue component",
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Timur Kasumov aka XAKEPEHOK",
+      "email": "support@leadvertex.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "moneyphp/money": "^3.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Leadvertex\\Components\\MoneyValue\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Leadvertex\\Components\\MoneyValue\\": "tests/"
+    }
+  }
+}
