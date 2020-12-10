@@ -1,5 +1,5 @@
 {
-  "name": "leadvertex/money-value",
+  "name": "leadvertex/component-money-value",
   "description": "LeadVertex MoneyValue component",
   "type": "library",
   "minimum-stability": "stable",
