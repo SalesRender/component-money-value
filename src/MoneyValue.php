@@ -9,10 +9,11 @@ namespace Leadvertex\Components\MoneyValue;
 
 
 use InvalidArgumentException;
+use JsonSerializable;
 use Money\Currency;
 use Money\Money;
 
-final class MoneyValue
+final class MoneyValue implements JsonSerializable
 {
 
     private int $amount;
@@ -158,4 +159,8 @@ final class MoneyValue
         return new self($value);
     }
 
+    public function jsonSerialize(): int
+    {
+        return $this->amount;
+    }
 }

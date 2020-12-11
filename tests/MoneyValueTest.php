@@ -177,4 +177,9 @@ class MoneyValueTest extends TestCase
         $this->assertEquals(100500, $moneyValue->getAmount());
     }
 
+    public function testJsonSerialize()
+    {
+        $this->assertSame('{"money":100500}', json_encode(['money' => new MoneyValue(100500)]));
+    }
+
 }
