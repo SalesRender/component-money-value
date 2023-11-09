@@ -5,7 +5,7 @@
  * @author Timur Kasumov (XAKEPEHOK)
  */
 
-namespace Leadvertex\Components\MoneyValue;
+namespace SalesRender\Components\MoneyValue;
 
 use InvalidArgumentException;
 use Money\Currency;

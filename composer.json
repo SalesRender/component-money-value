@@ -1,13 +1,13 @@
 {
-  "name": "leadvertex/component-money-value",
-  "description": "LeadVertex MoneyValue component",
+  "name": "salesrender/component-money-value",
+  "description": "SalesRender MoneyValue component",
   "type": "library",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
       "name": "Timur Kasumov aka XAKEPEHOK",
-      "email": "support@leadvertex.com"
+      "email": "support@salesrender.com"
     }
   ],
   "require": {
@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Leadvertex\\Components\\MoneyValue\\": "src/"
+      "SalesRender\\Components\\MoneyValue\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Leadvertex\\Components\\MoneyValue\\": "tests/"
+      "SalesRender\\Components\\MoneyValue\\": "tests/"
     }
   }
 }
