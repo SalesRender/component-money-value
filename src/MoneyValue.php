@@ -18,9 +18,12 @@ final class MoneyValue implements JsonSerializable
 
     private int $amount;
 
-    public function __construct(int $amount)
+    /**
+     * @param int|float $amount
+     */
+    public function __construct($amount)
     {
-        $this->amount = $amount;
+        $this->amount = intval(round($amount));
     }
 
     /**
