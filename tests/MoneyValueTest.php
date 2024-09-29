@@ -164,6 +164,12 @@ class MoneyValueTest extends TestCase
         $this->assertEquals(1000, $money->getAmount());
     }
 
+    public function testToFloat()
+    {
+        $this->assertSame((new MoneyValue(101))->toFloat(), 1.01);
+        $this->assertSame((new MoneyValue(101))->toFloat(1), 1.0);
+    }
+
     public function test__ToString()
     {
         $this->assertSame('1000', $this->moneyValue->__toString());

@@ -141,6 +141,11 @@ final class MoneyValue implements JsonSerializable
         return new Money($this->amount, $currency);
     }
 
+    public function toFloat(int $precision = 2): float
+    {
+        return round($this->amount  / 100, $precision);
+    }
+
     private function getMoneyOrValueAmount($moneyOrValue)
     {
         if ($moneyOrValue instanceof Money || $moneyOrValue instanceof MoneyValue) {
