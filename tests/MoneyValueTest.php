@@ -7,7 +7,7 @@
 
 namespace SalesRender\Components\MoneyValue;
 
-use InvalidArgumentException;
+use TypeError;
 use Money\Currency;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
@@ -45,7 +45,7 @@ class MoneyValueTest extends TestCase
 
     public function testNotMoneyOrMoneyValue()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(TypeError::class);
         $this->moneyValue->equals($this);
     }
 

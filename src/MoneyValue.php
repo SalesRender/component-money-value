@@ -8,7 +8,6 @@
 namespace SalesRender\Components\MoneyValue;
 
 
-use InvalidArgumentException;
 use JsonSerializable;
 use Money\Currency;
 use Money\Money;
@@ -18,10 +17,7 @@ final class MoneyValue implements JsonSerializable
 
     private int $amount;
 
-    /**
-     * @param int|float $amount
-     */
-    public function __construct($amount)
+    public function __construct(int|float $amount)
     {
         $this->amount = intval(round($amount));
     }
@@ -35,83 +31,47 @@ final class MoneyValue implements JsonSerializable
         return $this->amount;
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return bool
-     */
-    public function equals($moneyOrValue): bool
+    public function equals(Money|MoneyValue $moneyOrValue): bool
     {
         return $this->getMoneyOrValueAmount($moneyOrValue) == $this->amount;
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return bool
-     */
-    public function greatThan($moneyOrValue): bool
+    public function greatThan(Money|MoneyValue $moneyOrValue): bool
     {
         return $this->amount > $this->getMoneyOrValueAmount($moneyOrValue);
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return bool
-     */
-    public function greatThanOrEquals($moneyOrValue): bool
+    public function greatThanOrEquals(Money|MoneyValue $moneyOrValue): bool
     {
         return $this->amount >= $this->getMoneyOrValueAmount($moneyOrValue);
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return bool
-     */
-    public function lessThan($moneyOrValue): bool
+    public function lessThan(Money|MoneyValue $moneyOrValue): bool
     {
         return $this->amount < $this->getMoneyOrValueAmount($moneyOrValue);
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return bool
-     */
-    public function lessThanOrEquals($moneyOrValue): bool
+    public function lessThanOrEquals(Money|MoneyValue $moneyOrValue): bool
     {
         return $this->amount <= $this->getMoneyOrValueAmount($moneyOrValue);
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return MoneyValue
-     */
-    public function add($moneyOrValue): MoneyValue
+    public function add(Money|MoneyValue $moneyOrValue): MoneyValue
     {
         return new self($this->amount + $this->getMoneyOrValueAmount($moneyOrValue));
     }
 
-    /**
-     * @param Money|MoneyValue $moneyOrValue
-     * @return MoneyValue
-     */
-    public function subtract($moneyOrValue): MoneyValue
+    public function subtract(Money|MoneyValue $moneyOrValue): MoneyValue
     {
         return new self($this->amount - $this->getMoneyOrValueAmount($moneyOrValue));
     }
 
-    /**
-     * @param int|float $multiplier
-     * @return MoneyValue
-     */
-    public function multiply(float $multiplier): MoneyValue
+    public function multiply(int|float $multiplier): MoneyValue
     {
         return new self(round($this->amount * $multiplier));
     }
 
-    /**
-     * @param int|float $divisor
-     * @return MoneyValue
-     */
-    public function divide($divisor): MoneyValue
+    public function divide(int|float $divisor): MoneyValue
     {
         return new self(round($this->amount / $divisor));
     }
@@ -133,7 +93,7 @@ final class MoneyValue implements JsonSerializable
 
     public function __toString(): string
     {
-        return (string) $this->amount;
+        return (string)$this->amount;
     }
 
     public function convertToMoney(Currency $currency): Money
@@ -143,20 +103,17 @@ final class MoneyValue implements JsonSerializable
 
     public function toFloat(int $precision = 2): float
     {
-        return round($this->amount  / 100, $precision);
+        return round($this->amount / 100, $precision);
     }
 
-    private function getMoneyOrValueAmount($moneyOrValue)
+    private function getMoneyOrValueAmount(Money|MoneyValue $moneyOrValue): int
     {
-        if ($moneyOrValue instanceof Money || $moneyOrValue instanceof MoneyValue) {
-            return $moneyOrValue->getAmount();
-        }
-        throw new InvalidArgumentException('Object is not a Money or MoneyValue');
+        return (int)$moneyOrValue->getAmount();
     }
 
     public static function fromMoney(Money $money): self
     {
-        return new self($money->getAmount());
+        return new self((int)$money->getAmount());
     }
 
     public static function fromIntOrNull($value): ?self
